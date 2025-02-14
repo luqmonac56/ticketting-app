@@ -16,6 +16,9 @@ export function AttendeeDetails() {
   const [preview, setPreview] = useState<string | null>(null);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
+  const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME!;
+  const uploadPreset = process.env.NEXT_PUBLIC_CLOUDINARY_PRESET_NAME!;
+
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
 
@@ -50,11 +53,11 @@ export function AttendeeDetails() {
 
     const formData = new FormData();
     formData.append("file", selectedFile);
-    formData.append("upload_preset", "your_upload_preset");
+    formData.append("upload_preset", uploadPreset);
 
     try {
       const response = await fetch(
-        "https://api.cloudinary.com/v1_1/your_cloud_name/image/upload",
+        `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
         {
           method: "POST",
           body: formData,

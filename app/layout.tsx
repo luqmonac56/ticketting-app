@@ -1,16 +1,9 @@
-import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { FormProvider } from "@/contexts/form-context";
 import type React from "react"; // Added import for React
 
 const inter = Inter({ subsets: ["latin"] });
-
-export const metadata: Metadata = {
-  title: "Conference Ticket Generator",
-  description: "Generate your conference ticket",
-  generator: "v0.dev",
-};
 
 export default function RootLayout({
   children,
