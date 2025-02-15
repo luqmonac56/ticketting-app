@@ -114,8 +114,6 @@ export function AttendeeDetails() {
                 htmlFor="avatar-upload"
                 className="cursor-pointer flex flex-col items-center"
               >
-                {/* <Upload className="w-8 h-8 text-teal-500 mb-2" />
-                 */}
                 <Image width={32} height={32} alt="download icon" src="/cloud-download.png" />
                 <span className="text-gray-300">
                   Drag & drop or click to upload
@@ -144,7 +142,7 @@ export function AttendeeDetails() {
           <Input
             id="fullName"
             value={formData.fullName}
-            placeholder="Lagos Avi"
+            placeholder="Luqmonac Avi"
             onChange={(e) => updateFormData({ fullName: e.target.value })}
             className="bg-[#002626] text-white rounded-[12px] border-[#07373F]"
           />

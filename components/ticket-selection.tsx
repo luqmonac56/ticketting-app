@@ -11,8 +11,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import html2canvas from "html2canvas";
-import jsPDF from "jspdf";
 
 
 export function TicketSelection() {
@@ -41,7 +39,7 @@ export function TicketSelection() {
             <div className="flex flex-col lg:flex-row items-center justify-center text-gray-300 space-x-2">
               <span className="block">📍 [Event Location]</span>
               <span className="mx-2 hidden lg:block">||</span>
-              <span className="block">March 15, 2025 | 7:00 PM</span>
+              <span className="block"> 📆 March 15, 2025 | 7:00 PM</span>
             </div>
           </div>
 
