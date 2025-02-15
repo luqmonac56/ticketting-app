@@ -31,7 +31,7 @@ export function TicketSelection() {
       <Card className="bg-[#08252B] p-[24px] border border-[#0E464F] rounded-[32px] ">
         <div className="flex flex-col gap-[32px]">
           <div className="event-details p-6 text-center">
-            <h2 className="text-4xl font-bold text-[#fafafa] mb-4 font-serif">
+            <h2 className="text-4xl lg:text-[62px] road-rage font-bold text-[#fafafa] mb-4 font-serif">
               Techember Fest ”25
             </h2>
             <p className="text-gray-300 mb-4">
