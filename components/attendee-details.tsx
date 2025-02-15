@@ -174,6 +174,7 @@ export function AttendeeDetails() {
           </Label>
           <Textarea
             id="specialRequest"
+            maxLength={80}
             value={formData.specialRequest}
             onChange={(e) => updateFormData({ specialRequest: e.target.value })}
             className="bg-[#002626] border-[#07373F] rounded-[12px] text-white"

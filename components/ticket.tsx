@@ -60,7 +60,7 @@ export function Ticket() {
       </div>
 
       <Card id="ticket-content" className="ticket relative">
-        <div className="border-2 w-[95%] mx-auto my-0 border-[#24A0B5] bg-[rgba(3,30,33,0.1)] backdrop-blur-[2px] rounded-[12px] p-4">
+        <div className="border-2 w-[95%]  mx-auto my-0 border-[#24A0B5] bg-[rgba(3,30,33,0.1)] backdrop-blur-[2px] rounded-[12px] px-4 pt-4 pb-0">
           <div className="text-center mb-6">
             <h3 className="text-3xl font-bold road-rage text-white mb-4 font-serif">
               {EVENT_DETAILS.name}
@@ -75,10 +75,12 @@ export function Ticket() {
 
           {formData.avatarUrl && (
             <div className="flex justify-center mb-6">
-              <img
+              <Image
                 src={formData.avatarUrl || "/placeholder.svg"}
+                width={144}
+                height={144}
                 alt="Profile"
-                className=" w-36 h-36 rounded-[12px] border-4 border-[#24a0b580]"
+                className=" max-w-36 h-36  rounded-[12px] border-4 border-[#24a0b580]"
               />
             </div>
           )}
@@ -87,13 +89,15 @@ export function Ticket() {
             <div className="flex items-center gap-4 border-b  border-[#12464E]">
               <div className="border-r border-[#12464E] pb-1 pt-1 flex-1 ">
                 <p className="text-[10px] text-[#ffffff54]">Enter your name</p>
-                <p className="font-bold text-[12px]">{formData.fullName}</p>
+                <p className="font-bold text-[12px] break-words whitespace-normal">
+                  {formData.fullName}
+                </p>
               </div>
               <div className=" flex-1">
                 <p className="text-[10px] text-[#ffffff54]">
                   Enter your email *
                 </p>
-                <p className="font-bold text-[12px]  text-wrap">
+                <p className="font-bold text-[12px]  break-words whitespace-normal">
                   {formData.email}
                 </p>
               </div>
