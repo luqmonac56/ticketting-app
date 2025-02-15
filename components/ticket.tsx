@@ -5,13 +5,36 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { EVENT_DETAILS } from "@/constants";
 import { MapPin } from "lucide-react";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 
-export function TicketConfirmation() {
+export function Ticket() {
   const { formData, resetForm } = useForm();
 
-  const handleDownload = () => {
-    console.log("Downloading ticket...");
-  };
+const handleDownload = async () => {
+  const ticketElement = document.getElementById("ticket-content");
+
+  if (!ticketElement) return;
+
+  try {
+    const canvas = await html2canvas(ticketElement, { scale: 2 });
+    const imgData = canvas.toDataURL("image/png");
+
+    const pdf = new jsPDF({
+      orientation: "portrait",
+      unit: "mm",
+      format: "a4",
+    });
+
+    const imgWidth = 190; // Adjust width for A4 page
+    const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+    pdf.addImage(imgData, "PNG", 10, 10, imgWidth, imgHeight);
+    pdf.save("ticket.pdf");
+  } catch (error) {
+    console.error("Error generating PDF:", error);
+  }
+};
 
   return (
     <div className="w-[700px] p-12 mx-auto h-full bg-[#041E23] border border-[#0E464F] rounded-[40px]">
@@ -36,7 +59,10 @@ export function TicketConfirmation() {
         </p>
       </div>
 
-      <Card className="border-2 border-[#24A0B5] bg-[rgba(3,30,33,0.1)] rounded-[16px] p-6 w-[400px] m-auto">
+      <Card
+        id="ticket-content"
+        className="ticket border-2 border-[#24A0B5] bg-[rgba(3,30,33,0.1)] rounded-[16px] p-6 w-[400px] m-auto"
+      >
         <div className="border-2 border-[#24A0B5] bg-[rgba(3,30,33,0.1)] backdrop-blur-[2px] rounded-[12px] p-5">
           <div className="text-center mb-6">
             <h3 className="text-3xl font-bold text-white mb-4 font-serif">
@@ -97,6 +123,7 @@ export function TicketConfirmation() {
           </div>
         </div>
       </Card>
+
       <div className="flex gap-6 w-full justify-between pt-4">
         <Button
           variant="outline"

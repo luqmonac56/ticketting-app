@@ -11,6 +11,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
+
 
 export function TicketSelection() {
   const { formData, updateFormData } = useForm();

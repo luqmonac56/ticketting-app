@@ -3,7 +3,7 @@
 import { useForm } from "@/contexts/form-context"
 import { TicketSelection } from "@/components/ticket-selection"
 import { AttendeeDetails } from "@/components/attendee-details"
-import { TicketConfirmation } from "@/components/ticket-confirmation"
+import { Ticket } from "@/components/ticket"
 
 export default function Home() {
   const { formData } = useForm()
@@ -12,7 +12,7 @@ export default function Home() {
     <div className="flex items-center justify-center h-full">
       {formData.step === 1 && <TicketSelection />}
       {formData.step === 2 && <AttendeeDetails />}
-      {formData.step === 3 && <TicketConfirmation />}
+      {formData.step === 3 && <Ticket />}
     </div>
   )
 }
