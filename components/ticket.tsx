@@ -6,6 +6,7 @@ import { Card } from "@/components/ui/card";
 import { EVENT_DETAILS } from "@/constants";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
+import Image from "next/image";
 
 export function Ticket() {
   const { formData, resetForm } = useForm();
@@ -58,11 +59,8 @@ export function Ticket() {
         </p>
       </div>
 
-      <Card
-        id="ticket-content"
-        className="ticket border-2 border-[#24A0B5] bg-[rgba(3,30,33,0.1)] rounded-[36px] p-6 lg:w-[400px]  m-auto"
-      >
-        <div className="border-2 border-[#24A0B5] bg-[rgba(3,30,33,0.1)] backdrop-blur-[2px] rounded-[12px] p-5">
+      <Card id="ticket-content" className="ticket relative">
+        <div className="border-2 w-[95%] mx-auto my-0 border-[#24A0B5] bg-[rgba(3,30,33,0.1)] backdrop-blur-[2px] rounded-[12px] p-4">
           <div className="text-center mb-6">
             <h3 className="text-3xl font-bold road-rage text-white mb-4 font-serif">
               {EVENT_DETAILS.name}
@@ -75,15 +73,17 @@ export function Ticket() {
             </div>
           </div>
 
-          <div className="flex justify-center mb-6">
-            <img
-              src={formData.avatarUrl || "/placeholder.svg"}
-              alt="Profile"
-              className=" w-36 h-36 rounded-[12px] border-4 border-[#24a0b580]"
-            />
-          </div>
+          {formData.avatarUrl && (
+            <div className="flex justify-center mb-6">
+              <img
+                src={formData.avatarUrl || "/placeholder.svg"}
+                alt="Profile"
+                className=" w-36 h-36 rounded-[12px] border-4 border-[#24a0b580]"
+              />
+            </div>
+          )}
 
-          <div className=" text-white p-2 rounded-[12px] border-[#133D44] bg-[#08343C]">
+          <div className=" text-white lg:p-3 p-2 rounded-[12px] border-[#133D44] bg-[#08343C]">
             <div className="flex items-center gap-4 border-b  border-[#12464E]">
               <div className="border-r border-[#12464E] pb-1 pt-1 flex-1 ">
                 <p className="text-[10px] text-[#ffffff54]">Enter your name</p>
@@ -93,7 +93,7 @@ export function Ticket() {
                 <p className="text-[10px] text-[#ffffff54]">
                   Enter your email *
                 </p>
-                <p className="font-bold text-[12px] text-wrap">
+                <p className="font-bold text-[12px]  text-wrap">
                   {formData.email}
                 </p>
               </div>
@@ -113,10 +113,20 @@ export function Ticket() {
 
             <div className="pt-2 ">
               <p className="text-[10px] text-[#ffffff54]">Special request?</p>
-              <p className="text-[12px] ">{formData.specialRequest}</p>
+              <p className="text-[12px] break-words whitespace-normal">
+                {formData.specialRequest}
+              </p>
             </div>
           </div>
         </div>
+
+        <Image
+          src="/bar-code.png"
+          alt="bar code"
+          width={236}
+          height={68}
+          className="mt-3 mb-0 mx-auto absolute bottom-[22px] left-[32px]"
+        />
       </Card>
 
       <div className="flex gap-6 w-full justify-between pt-4">

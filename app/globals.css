@@ -66,3 +66,15 @@ input::placeholder {
 textarea::placeholder {
   color: #aaa !important;
 }
+
+
+.ticket{
+  background: url(/bg.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 300px;
+  height: 600px;
+  margin: 0 auto;
+  border: 0;
+  padding: 20px;
+}
